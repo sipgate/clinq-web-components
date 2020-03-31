@@ -1,4 +1,4 @@
-# CLINQ Web Components
+# CLINQ Web Components :art:
 
 Basic UI elements as web components used in CLINQ apps.
 
@@ -13,12 +13,13 @@ npm i @clinq/web-components
 ## Example
 
 ```ts
+import { ButtonVariant } from "@clinq/web-components";
 import { html, render } from "lit-html";
 
 const example = ({ disabled, onClick }) => html`
   <clinq-button
     round
-    .variant=${ButtonVariant.PRODUCT}
+    .variant=${ButtonVariant.BRIGHT}
     ?disabled=${disabled}
     @on-click=${onClick}
   >
