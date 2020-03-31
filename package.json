@@ -1,0 +1,33 @@
+{
+  "name": "@clinq/web-components",
+  "version": "0.1.0",
+  "description": "Basic UI elements as web components used in CLINQ apps.",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "rimraf lib && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sipgate/clinq-web-components.git"
+  },
+  "keywords": [
+    "web-components"
+  ],
+  "author": "CLINQ <hello@clinq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sipgate/clinq-web-components/issues"
+  },
+  "homepage": "https://github.com/sipgate/clinq-web-components#readme",
+  "dependencies": {
+    "date-fns": "^2.11.1",
+    "haunted": "^4.7.0",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  }
+}
