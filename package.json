@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/sipgate/clinq-web-components#readme",
   "dependencies": {
-    "date-fns": "^2.11.1",
     "haunted": "^4.7.0",
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1",
