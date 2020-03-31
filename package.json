@@ -4,6 +4,7 @@
   "description": "Basic UI elements as web components used in CLINQ apps.",
   "main": "lib/index.js",
   "scripts": {
+    "start": "tsc --watch",
     "prepublishOnly": "npm run build",
     "build": "rimraf lib && tsc"
   },
@@ -20,13 +21,16 @@
     "url": "https://github.com/sipgate/clinq-web-components/issues"
   },
   "homepage": "https://github.com/sipgate/clinq-web-components#readme",
-  "dependencies": {
+  "devDependencies": {
     "haunted": "^4.7.0",
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1",
-    "typescript": "^3.7.5"
-  },
-  "devDependencies": {
+    "typescript": "^3.7.5",
     "rimraf": "^3.0.2"
+  },
+  "peerDependencies": {
+    "haunted": "^4",
+    "lit-element": "^2",
+    "lit-html": "^1"
   }
 }
