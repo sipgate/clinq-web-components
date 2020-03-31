@@ -1,4 +1,4 @@
-import { html } from "lit-html";
+import { html, nothing } from "lit-html";
 import styles from "./input.styles";
 import { LitElement, property } from "lit-element";
 
@@ -11,10 +11,15 @@ class Input extends LitElement {
   @property({ attribute: false })
   private placeholder = "";
 
+  @property({ attribute: false })
+  private icon?: string;
+
   private handleInput(event: InputEvent) {
     if (event.target) {
       const target = event.target as HTMLInputElement;
-      this.dispatchEvent(new CustomEvent("change", { detail: target.value }));
+      this.dispatchEvent(
+        new CustomEvent("change", { detail: { value: target.value } })
+      );
     }
   }
 
@@ -25,6 +30,11 @@ class Input extends LitElement {
         .value=${this.value}
         @input=${this.handleInput}
       />
+      ${this.icon
+        ? html`
+            <img src=${this.icon} />
+          `
+        : nothing}
     `;
   }
 }

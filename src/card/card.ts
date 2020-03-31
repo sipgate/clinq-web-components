@@ -13,7 +13,6 @@ function Card() {
         <div class="text"><slot name="content"></slot></div>
       </div>
     </div>
-    <div class="footnote"><slot name="footnote"></slot></div>
   `;
 }
 

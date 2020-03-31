@@ -36,10 +36,5 @@ export default html`
     .text {
       padding: 10px;
     }
-
-    .footnote {
-      padding: 5px;
-      color: var(--theme-highlight);
-    }
   </style>
 `;

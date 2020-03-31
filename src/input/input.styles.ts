@@ -2,6 +2,8 @@ import { css } from "lit-element";
 
 export default css`
   :host {
+    display: block;
+    position: relative;
     width: 100%;
   }
 
@@ -13,11 +15,20 @@ export default css`
     border-radius: var(--theme-input-radius);
     background: var(--theme-input);
     width: 100%;
-    padding: 5px 10px;
+    height: 100%;
+    padding: 5px 40px 5px 10px;
     outline: none;
   }
 
   input::placeholder {
     color: var(--theme-placeholder);
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: calc(50% - 10px);
+    right: 15px;
   }
 `;
