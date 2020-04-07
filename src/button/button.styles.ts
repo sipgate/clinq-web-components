@@ -3,7 +3,6 @@ import { css } from "lit-element";
 export default css`
   :host {
     overflow: hidden;
-    border-radius: 20px;
   }
 
   button {
@@ -22,6 +21,7 @@ export default css`
     padding: 10px 15px;
     width: 100%;
     height: 100%;
+    border-radius: 20px;
     cursor: pointer;
   }
 
@@ -46,7 +46,7 @@ export default css`
 
   button.product {
     background: var(--theme-product);
-    color: var(--theme-text-alert);
+    color: var(--theme-text-light);
     text-shadow: 0 0.5px 1px #057c76;
   }
 
@@ -55,7 +55,7 @@ export default css`
   }
 
   button.danger {
-    color: var(--theme-text-alert);
+    color: var(--theme-text-light);
     background: var(--theme-danger);
   }
 

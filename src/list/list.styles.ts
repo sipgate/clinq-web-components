@@ -5,7 +5,7 @@ export default css`
     display: flex;
     font-size: 12px;
     font-weight: 700;
-    color: var(--theme-ui-invert);
+    color: var(--theme-text-light);
     padding: 0 25px;
     line-height: 25px;
     height: 25px;

@@ -74,7 +74,7 @@ export default html`
     }
 
     .title {
-      color: var(--theme-ui-invert);
+      color: var(--theme-text-light);
       font-size: 12px;
       font-weight: 700;
       overflow: hidden;
