@@ -4,48 +4,54 @@ import { classMap } from "lit-html/directives/class-map";
 import styles from "./button.styles";
 
 export enum ButtonVariant {
-  DEFAULT = "DEFAULT",
-  BRIGHT = "BRIGHT",
-  PRODUCT = "PRODUCT",
-  DANGER = "DANGER",
-  LINK = "LINK",
+	DEFAULT = "DEFAULT",
+	BRIGHT = "BRIGHT",
+	PRODUCT = "PRODUCT",
+	DANGER = "DANGER",
+	LINK = "LINK",
 }
 
+type ButtonType = "button" | "submit" | "reset" | "menu";
+
 class Button extends LitElement {
-  static styles = styles;
+	static styles = styles;
 
-  @property({ type: Boolean })
-  public disabled: boolean = false;
+	@property({ attribute: true })
+	private type: ButtonType = "button";
 
-  @property({ type: Boolean })
-  public round: boolean = false;
+	@property({ type: Boolean })
+	public disabled: boolean = false;
 
-  @property({ attribute: false })
-  public variant: ButtonVariant = ButtonVariant.DEFAULT;
+	@property({ type: Boolean })
+	public round: boolean = false;
 
-  private handleClick() {
-    this.dispatchEvent(new CustomEvent("on-click"));
-  }
+	@property({ attribute: false })
+	public variant: ButtonVariant = ButtonVariant.DEFAULT;
 
-  render() {
-    const { disabled, round, handleClick, variant } = this;
-    return html`
-      <button
-        ?disabled=${disabled}
-        @click=${handleClick}
-        class=${classMap({
-          round,
-          default: variant === ButtonVariant.DEFAULT,
-          product: variant === ButtonVariant.PRODUCT,
-          bright: variant === ButtonVariant.BRIGHT,
-          danger: variant === ButtonVariant.DANGER,
-          link: variant === ButtonVariant.LINK,
-        })}
-      >
-        <slot></slot>
-      </button>
-    `;
-  }
+	private handleClick() {
+		this.dispatchEvent(new CustomEvent("on-click"));
+	}
+
+	render() {
+		const { disabled, round, handleClick, variant } = this;
+		return html`
+			<button
+				type=${this.type}
+				?disabled=${disabled}
+				@click=${handleClick}
+				class=${classMap({
+					round,
+					default: variant === ButtonVariant.DEFAULT,
+					product: variant === ButtonVariant.PRODUCT,
+					bright: variant === ButtonVariant.BRIGHT,
+					danger: variant === ButtonVariant.DANGER,
+					link: variant === ButtonVariant.LINK,
+				})}
+			>
+				<slot></slot>
+			</button>
+		`;
+	}
 }
 
 customElements.define("clinq-button", Button);

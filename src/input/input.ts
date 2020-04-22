@@ -2,41 +2,75 @@ import { html, nothing } from "lit-html";
 import styles from "./input.styles";
 import { LitElement, property } from "lit-element";
 
+type InputType =
+	| "hidden"
+	| "text"
+	| "search"
+	| "tel"
+	| "url"
+	| "email"
+	| "password"
+	| "datetime"
+	| "date"
+	| "month"
+	| "week"
+	| "time"
+	| "datetime-local"
+	| "number"
+	| "range"
+	| "color"
+	| "checkbox"
+	| "radio"
+	| "file"
+	| "submit"
+	| "image"
+	| "reset"
+	| "button";
+
 class Input extends LitElement {
-  static styles = styles;
+	static styles = styles;
 
-  @property({ attribute: false })
-  private value = "";
+	@property({ attribute: true })
+	private type: InputType = "text";
 
-  @property({ attribute: false })
-  private placeholder = "";
+	@property({ attribute: false })
+	private value = "";
 
-  @property({ attribute: false })
-  private icon?: string;
+	@property({ attribute: true })
+	private placeholder = "";
 
-  private handleInput(event: InputEvent) {
-    if (event.target) {
-      const target = event.target as HTMLInputElement;
-      this.dispatchEvent(
-        new CustomEvent("change", { detail: { value: target.value } })
-      );
-    }
-  }
+	@property({ attribute: false })
+	private icon?: string;
 
-  render() {
-    return html`
-      <input
-        placeholder=${this.placeholder}
-        .value=${this.value}
-        @input=${this.handleInput}
-      />
-      ${this.icon
-        ? html`
-            <img src=${this.icon} />
-          `
-        : nothing}
-    `;
-  }
+	@property({ attribute: true })
+	private required = false;
+
+	private handleInput(event: InputEvent) {
+		if (event.target) {
+			const target = event.target as HTMLInputElement;
+			this.dispatchEvent(
+				new CustomEvent("change", {
+					detail:
+						this.type === "checkbox"
+							? { value: target.checked }
+							: { value: target.value },
+				})
+			);
+		}
+	}
+
+	render() {
+		return html`
+			<input
+				placeholder=${this.placeholder}
+				.value=${this.value}
+				type=${this.type}
+				@input=${this.handleInput}
+				?required=${this.required}
+			/>
+			${this.icon ? html` <img src=${this.icon} /> ` : nothing}
+		`;
+	}
 }
 
 customElements.define("clinq-input", Input);
