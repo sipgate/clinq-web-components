@@ -14,40 +14,24 @@ export type ListItemEntry = {
 export type ListItemProps = { value: ListItemEntry };
 
 function ListItem({
-  value: { image, name, description, annotation, icon }
+  value: { image, name, description, annotation, icon },
 }: ListItemProps) {
   return html`
     ${styles}
 
     <div class="container">
       ${icon
-        ? html`
-            <div class="icon"><img src=${icon} alt="Icon" /></div>
-          `
+        ? html` <div class="icon"><img src=${icon} alt="Icon" /></div> `
         : nothing}
-      <div class="avatar">
-        ${image
-          ? html`
-              <img src=${image} alt=${name || "Image"} />
-            `
-          : nothing}
-      </div>
+      <clinq-avatar class="avatar" .url=${image} .alt=${name}></clinq-avatar>
       <div class="content">
-        ${name
-          ? html`
-              <div class="title">${name}</div>
-            `
-          : nothing}
+        ${name ? html` <div class="title">${name}</div> ` : nothing}
         ${description
-          ? html`
-              <div class="description">${description}</div>
-            `
+          ? html` <div class="description">${description}</div> `
           : nothing}
       </div>
       ${annotation
-        ? html`
-            <div class="annotation">${annotation}</div>
-          `
+        ? html` <div class="annotation">${annotation}</div> `
         : nothing}
     </div>
   `;

@@ -18,3 +18,5 @@ import "./message/message";
 export * from "./message/message";
 import "./info-container/info-container";
 export * from "./info-container/info-container";
+import "./avatar/avatar";
+export * from "./avatar/avatar";
