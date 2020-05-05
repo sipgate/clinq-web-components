@@ -20,3 +20,5 @@ import "./info-container/info-container";
 export * from "./info-container/info-container";
 import "./avatar/avatar";
 export * from "./avatar/avatar";
+import "./video/video";
+export * from "./video/video";
