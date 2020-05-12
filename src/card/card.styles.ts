@@ -36,5 +36,9 @@ export default html`
     .text {
       padding: 10px;
     }
+
+    .footer {
+      padding: 10px;
+    }
   </style>
 `;

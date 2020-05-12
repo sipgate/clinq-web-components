@@ -11,6 +11,7 @@ function Card() {
       <div class="content">
         <div class="icon"><slot name="icon"></slot></div>
         <div class="text"><slot name="content"></slot></div>
+        <div class="footer"><slot name="footer"></slot></div>
       </div>
     </div>
   `;
