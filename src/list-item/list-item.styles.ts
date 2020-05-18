@@ -96,5 +96,11 @@ export default html`
       padding: 0 15px;
       opacity: 0.5;
     }
+
+    .annotation {
+      font-size: 10px;
+      padding: 0 15px;
+      opacity: 0.5;
+    }
   </style>
 `;
