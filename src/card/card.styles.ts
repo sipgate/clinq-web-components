@@ -5,6 +5,8 @@ export default html`
     :host {
       display: flex;
       flex-direction: column;
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     .card {
@@ -12,9 +14,6 @@ export default html`
       background: var(--theme-background-light);
       box-sizing: border-box;
       width: 100%;
-      border: none;
-      border-radius: 8px;
-      overflow: hidden;
     }
 
     .content {
@@ -34,10 +33,6 @@ export default html`
     }
 
     .text {
-      padding: 10px;
-    }
-
-    .footer {
       padding: 10px;
     }
   </style>
