@@ -3,6 +3,7 @@ import { css } from "lit-element";
 export default css`
   :host {
     overflow: hidden;
+    height: 40px;
   }
 
   button {
@@ -16,9 +17,8 @@ export default css`
     border: none;
     font-size: 14px;
     font-weight: 600;
-    padding: 0;
     box-sizing: border-box;
-    padding: 10px 15px;
+    padding: 0 15px;
     width: 100%;
     height: 100%;
     border-radius: 20px;
