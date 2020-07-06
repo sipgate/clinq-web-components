@@ -21,7 +21,7 @@ const example = ({ disabled, onClick }) => html`
     round
     .variant=${ButtonVariant.BRIGHT}
     ?disabled=${disabled}
-    @on-click=${onClick}
+    @click=${onClick}
   >
     <img src="./images/image.svg" />
   </clinq-button>
