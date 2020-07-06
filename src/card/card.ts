@@ -1,15 +1,19 @@
-import { html } from "lit-html";
+import { html, nothing } from "lit-html";
 import styles from "./card.styles";
 import { component } from "haunted";
 
-function Card() {
+type CardProps = {
+  icon?: string;
+};
+
+function Card({ icon }: CardProps) {
   return html`
     ${styles}
 
     <div class="card">
       <slot name="header"></slot>
       <div class="content">
-        <div class="icon"><slot name="icon"></slot></div>
+        ${icon ? html`<div class="icon"><img src=${icon} /></div>` : nothing}
         <div class="text"><slot name="content"></slot></div>
       </div>
       <slot name="footer"></slot>
@@ -17,4 +21,4 @@ function Card() {
   `;
 }
 
-customElements.define("clinq-card", component(Card));
+customElements.define("clinq-card", component<CardProps>(Card));
