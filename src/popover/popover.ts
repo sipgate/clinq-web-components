@@ -1,61 +1,45 @@
+import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import { StyleInfo, styleMap } from "lit-html/directives/style-map";
 import styles from "./popover.styles";
-import { useState, useEffect, component } from "haunted";
 
-export type PopoverProps = {
-  placement?: "bottom-left" | "bottom-right";
-};
+@customElement("clinq-popover")
+export class Popover extends LitElement {
+  @property({ attribute: true })
+  private placement: "bottom-left" | "bottom-right" = "bottom-right";
 
-function Popover({ placement = "bottom-right" }: PopoverProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  @property({ attribute: true })
+  private open = false;
 
-  useEffect(() => {
-    const listener = () => {
-      if (isOpen) {
-        setIsOpen(false);
-      }
-    };
-    document.body.addEventListener("click", listener);
-    return () => document.body.removeEventListener("click", listener);
-  });
+  private handleToggle() {
+    this.dispatchEvent(new CustomEvent("toggle"));
+  }
 
-  const toggleIsOpen = (event: MouseEvent) => {
-    event.stopPropagation();
-    setIsOpen(!isOpen);
-  };
-
-  const handleContentClick = (event: MouseEvent) => event.stopPropagation();
-
-  const getContentPosition = () => {
+  private getContentPosition() {
     const baseStyles: StyleInfo = { top: "calc(100% + 5px)" };
-    if (placement === "bottom-left") {
+    if (this.placement === "bottom-left") {
       return styleMap({ ...baseStyles, left: "0" });
     }
-    if (placement === "bottom-right") {
+    if (this.placement === "bottom-right") {
       return styleMap({ ...baseStyles, right: "0" });
     }
     return styleMap(baseStyles);
-  };
+  }
 
-  return html`
-    ${styles}
+  public render() {
+    return html`
+      ${styles}
 
-    <div class="container">
-      <slot name="button" @click=${toggleIsOpen}></slot>
-      ${isOpen
-        ? html`
-            <div
-              class="content"
-              @click=${handleContentClick}
-              style=${getContentPosition()}
-            >
-              <slot name="content"></slot>
-            </div>
-          `
-        : nothing}
-    </div>
-  `;
+      <div class="container">
+        <slot name="button" @click=${this.handleToggle}></slot>
+        ${this.open
+          ? html`
+              <div class="content" style=${this.getContentPosition()}>
+                <slot name="content"></slot>
+              </div>
+            `
+          : nothing}
+      </div>
+    `;
+  }
 }
-
-customElements.define("clinq-popover", component<PopoverProps>(Popover));

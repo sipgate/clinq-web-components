@@ -5,9 +5,11 @@ export default html`
     :host {
       display: block;
     }
+
     .container {
       position: relative;
     }
+
     .content {
       position: absolute;
     }
