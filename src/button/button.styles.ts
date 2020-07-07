@@ -3,7 +3,8 @@ import { css } from "lit-element";
 export default css`
   :host {
     overflow: hidden;
-    height: 40px;
+    height: 35px;
+    flex-shrink: 0;
   }
 
   button {
