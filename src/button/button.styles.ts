@@ -2,6 +2,7 @@ import { css } from "lit-element";
 
 export default css`
   :host {
+    display: inline-block;
     overflow: hidden;
     height: 35px;
     flex-shrink: 0;
