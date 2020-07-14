@@ -9,6 +9,7 @@ export enum ButtonVariant {
   PRODUCT = "PRODUCT",
   DANGER = "DANGER",
   LINK = "LINK",
+    CTA= "CTA"
 }
 
 type ButtonType = "button" | "submit" | "reset" | "menu";
@@ -47,6 +48,7 @@ class Button extends LitElement {
           bright: variant === ButtonVariant.BRIGHT,
           danger: variant === ButtonVariant.DANGER,
           link: variant === ButtonVariant.LINK,
+          cta: variant === ButtonVariant.CTA,
         })}
       >
         <slot></slot>

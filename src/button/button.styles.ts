@@ -79,6 +79,12 @@ export default css`
     box-shadow: none;
     color: var(--theme-product);
   }
+  
+ button.cta {
+    background: var(--theme-cta);
+    color: var(--theme-text-light);
+    text-shadow: 0 0.5px 1px var(--theme-cta-alt);
+  }
 
   button:not(:disabled).link:hover {
     background: transparent;
