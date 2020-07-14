@@ -1,6 +1,6 @@
 {
   "name": "@clinq/web-components",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Basic UI elements as web components used in CLINQ apps.",
   "main": "lib/index.js",
   "scripts": {
