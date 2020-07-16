@@ -23,6 +23,7 @@ export default css`
     padding: 0 15px;
     width: 100%;
     height: 100%;
+    min-width: 100px;
     border-radius: 20px;
     cursor: pointer;
   }
@@ -79,8 +80,8 @@ export default css`
     box-shadow: none;
     color: var(--theme-product);
   }
-  
- button.cta {
+
+  button.cta {
     background: var(--theme-cta);
     color: var(--theme-text-light);
     text-shadow: 0 0.5px 1px var(--theme-cta-alt);
@@ -90,8 +91,8 @@ export default css`
     background: transparent;
     color: var(--theme-product-alt);
   }
-  
-  clinq-spinner{
+
+  clinq-spinner {
     margin-right: 5px;
   }
 `;

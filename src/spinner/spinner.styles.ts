@@ -4,7 +4,7 @@ export default css`
   :host {
     display: inline-flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
   }
 
   .spinner {
@@ -14,9 +14,16 @@ export default css`
   }
 
   .path {
-    stroke: rgba(255, 255, 255, 0.5);
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
+  }
+
+  .path.dark {
+    stroke: rgba(0, 0, 0, 0.5);
+  }
+
+  .path.bright {
+    stroke: rgba(255, 255, 255, 0.5);
   }
 
   @keyframes rotate {

@@ -1,6 +1,7 @@
 import { LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
+import { SpinnerVariant } from "../spinner/spinner";
 import styles from "./button.styles";
 
 export enum ButtonVariant {
@@ -54,7 +55,13 @@ class Button extends LitElement {
           cta: variant === ButtonVariant.CTA,
         })}
       >
-        ${loading ? html`<clinq-spinner></clinq-spinner>` : nothing}
+        ${loading
+          ? html`<clinq-spinner
+              .variant=${variant === ButtonVariant.BRIGHT
+                ? SpinnerVariant.DARK
+                : SpinnerVariant.BRIGHT}
+            ></clinq-spinner>`
+          : nothing}
         <slot></slot>
       </button>
     `;
