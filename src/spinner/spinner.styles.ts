@@ -1,21 +1,42 @@
-import { html } from "lit-html";
+import { css } from "lit-element";
 
-export default html`
-  <style>
-    :host {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
+export default css`
+  :host {
+    display: inline-flex;
+    justify-content: center;
+    align-items:center;
+  }
 
-    img {
-      width: 128px;
-      height: 128px;
-    }
+  .spinner {
+    animation: rotate 2s linear infinite;
+    width: 15px;
+    height: 15px;
+  }
 
-    .fill {
-      flex: 1;
+  .path {
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
     }
-  </style>
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
 `;

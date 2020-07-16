@@ -26,7 +26,8 @@
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1",
     "typescript": "^3.7.5",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "prettier": "^2.0.5"
   },
   "peerDependencies": {
     "haunted": "^4",

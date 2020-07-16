@@ -1,5 +1,5 @@
 import { LitElement, property } from "lit-element";
-import { html } from "lit-html";
+import { html, nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./button.styles";
 
@@ -9,7 +9,7 @@ export enum ButtonVariant {
   PRODUCT = "PRODUCT",
   DANGER = "DANGER",
   LINK = "LINK",
-    CTA= "CTA"
+  CTA = "CTA",
 }
 
 type ButtonType = "button" | "submit" | "reset" | "menu";
@@ -26,6 +26,9 @@ class Button extends LitElement {
   @property({ type: Boolean })
   public round: boolean = false;
 
+  @property({ type: Boolean, attribute: true })
+  public loading: boolean = false;
+
   @property({ attribute: false })
   public variant: ButtonVariant = ButtonVariant.DEFAULT;
 
@@ -35,7 +38,7 @@ class Button extends LitElement {
   }
 
   render() {
-    const { disabled, round, variant } = this;
+    const { disabled, round, variant, loading } = this;
     return html`
       <button
         type=${this.type}
@@ -51,6 +54,7 @@ class Button extends LitElement {
           cta: variant === ButtonVariant.CTA,
         })}
       >
+        ${loading ? html`<clinq-spinner></clinq-spinner>` : nothing}
         <slot></slot>
       </button>
     `;
