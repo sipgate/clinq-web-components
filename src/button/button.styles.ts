@@ -23,9 +23,12 @@ export default css`
     padding: 0 15px;
     width: 100%;
     height: 100%;
-    min-width: 100px;
     border-radius: 20px;
     cursor: pointer;
+  }
+
+  button:not(.round) {
+    min-width: 100px;
   }
 
   .round {

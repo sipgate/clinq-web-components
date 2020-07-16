@@ -61,8 +61,7 @@ class Button extends LitElement {
                 ? SpinnerVariant.DARK
                 : SpinnerVariant.BRIGHT}
             ></clinq-spinner>`
-          : nothing}
-        <slot></slot>
+          : html`<slot></slot>`}
       </button>
     `;
   }
