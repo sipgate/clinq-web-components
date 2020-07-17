@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/sipgate/clinq-web-components#readme",
   "devDependencies": {
-    "haunted": "^4.7.0",
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1",
     "typescript": "^3.7.5",
@@ -30,7 +29,6 @@
     "prettier": "^2.0.5"
   },
   "peerDependencies": {
-    "haunted": "^4",
     "lit-element": "^2",
     "lit-html": "^1"
   }

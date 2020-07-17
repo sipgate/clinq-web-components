@@ -1,15 +1,16 @@
+import { customElement, LitElement } from "lit-element";
 import { html } from "lit-html";
 import styles from "./info-container.styles";
-import { component } from "haunted";
 
-function InfoContainer() {
-  return html`
-    ${styles}
+@customElement("clinq-info-container")
+export class InfoContainer extends LitElement {
+  public render() {
+    return html`
+      ${styles}
 
-    <div class="container">
-      <slot></slot>
-    </div>
-  `;
+      <div class="container">
+        <slot></slot>
+      </div>
+    `;
+  }
 }
-
-customElements.define("clinq-info-container", component(InfoContainer));

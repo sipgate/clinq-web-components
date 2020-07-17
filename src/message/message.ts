@@ -1,11 +1,12 @@
-import { html } from "lit-html";
+import { html, nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./message.styles";
-import { component } from "haunted";
+import { LitElement, customElement, property } from "lit-element";
 
-export type MessageProps = {
-  value: Message;
-};
+export enum MessageType {
+  USER,
+  OTHER,
+}
 
 export interface Message {
   type: MessageType;
@@ -13,25 +14,32 @@ export interface Message {
   time: string;
 }
 
-export enum MessageType {
-  USER,
-  OTHER
+@customElement("clinq-message")
+export class Message extends LitElement {
+  @property({ attribute: false })
+  public value: Message | null = null;
+
+  public render() {
+    const { value } = this;
+
+    if (!value) {
+      return nothing;
+    }
+
+    const { type, text, time } = value;
+
+    const containerStyles = classMap({
+      user: type === MessageType.USER,
+      other: type === MessageType.OTHER,
+    });
+
+    return html`
+      ${styles}
+
+      <div class="container ${containerStyles}">
+        <div class="text">${text}</div>
+        <div class="time">${time}</div>
+      </div>
+    `;
+  }
 }
-
-function Message({ value: { type, text, time } }: MessageProps) {
-  const containerStyles = classMap({
-    user: type === MessageType.USER,
-    other: type === MessageType.OTHER
-  });
-
-  return html`
-    ${styles}
-
-    <div class="container ${containerStyles}">
-      <div class="text">${text}</div>
-      <div class="time">${time}</div>
-    </div>
-  `;
-}
-
-customElements.define("clinq-message", component<MessageProps>(Message));

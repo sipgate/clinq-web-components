@@ -1,5 +1,5 @@
-import { component } from "haunted";
-import { html } from "lit-html";
+import { LitElement, property, customElement } from "lit-element";
+import { html, nothing } from "lit-html";
 import styles from "./info-item.styles";
 
 export type InfoItemProps = {
@@ -7,18 +7,27 @@ export type InfoItemProps = {
   value: string;
 };
 
-function InfoItem({ label, value }: InfoItemProps) {
-  return html`
-    ${styles}
+@customElement("clinq-info-item")
+export class InfoItem extends LitElement {
+  @property()
+  public label: string | null = null;
 
-    <clinq-info-container>
-      <div class="content">
-        <div class="label">${label}</div>
-        <div class="value">${value}</div>
-      </div>
-      <slot></slot>
-    </clinq-info-container>
-  `;
+  @property()
+  public value: string | null = null;
+
+  public render() {
+    const { label, value } = this;
+
+    return html`
+      ${styles}
+
+      <clinq-info-container>
+        <div class="content">
+          ${label ? html`<div class="label">${label}</div>` : nothing}
+          ${value ? html`<div class="value">${value}</div>` : nothing}
+        </div>
+        <slot></slot>
+      </clinq-info-container>
+    `;
+  }
 }
-
-customElements.define("clinq-info-item", component<InfoItemProps>(InfoItem));

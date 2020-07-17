@@ -1,9 +1,10 @@
-import { property, LitElement } from "lit-element";
+import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import { ListItemEntry } from "../list-item/list-item";
 import styles from "./list.styles";
 
-class List extends LitElement {
+@customElement("clinq-list")
+export class List extends LitElement {
   static styles = styles;
 
   @property({ attribute: false })
@@ -71,5 +72,3 @@ class List extends LitElement {
     `;
   }
 }
-
-customElements.define("clinq-list", List);

@@ -1,7 +1,14 @@
-import { html, LitElement, property, PropertyValues } from "lit-element";
+import {
+  html,
+  LitElement,
+  property,
+  PropertyValues,
+  customElement,
+} from "lit-element";
 import styles from "./video.styles";
 
-class Video extends LitElement {
+@customElement("clinq-video")
+export class Video extends LitElement {
   static styles = styles;
 
   @property({ attribute: false })
@@ -29,5 +36,3 @@ class Video extends LitElement {
     return html` <video autoplay></video>`;
   }
 }
-
-customElements.define("clinq-video", Video);

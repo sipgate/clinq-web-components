@@ -1,24 +1,26 @@
+import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import styles from "./card.styles";
-import { component } from "haunted";
 
-type CardProps = {
-  icon?: string;
-};
+@customElement("clinq-card")
+export class Card extends LitElement {
+  @property()
+  public icon: string | null = null;
 
-function Card({ icon }: CardProps) {
-  return html`
-    ${styles}
+  public render() {
+    const { icon } = this;
 
-    <div class="card">
-      <slot name="header"></slot>
-      <div class="content">
-        ${icon ? html`<div class="icon"><img src=${icon} /></div>` : nothing}
-        <div class="text"><slot name="content"></slot></div>
+    return html`
+      ${styles}
+
+      <div class="card">
+        <slot name="header"></slot>
+        <div class="content">
+          ${icon ? html`<div class="icon"><img src=${icon} /></div>` : nothing}
+          <div class="text"><slot name="content"></slot></div>
+        </div>
+        <slot name="footer"></slot>
       </div>
-      <slot name="footer"></slot>
-    </div>
-  `;
+    `;
+  }
 }
-
-customElements.define("clinq-card", component<CardProps>(Card));

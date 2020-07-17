@@ -8,7 +8,7 @@ export class Popover extends LitElement {
   @property({ attribute: true })
   private placement: "bottom-left" | "bottom-right" = "bottom-right";
 
-  @property({ attribute: true })
+  @property({ type: Boolean, attribute: true })
   private open = false;
 
   private handleToggle() {

@@ -1,6 +1,6 @@
+import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import styles from "./list-item.styles";
-import { component } from "haunted";
 
 export type ListItemEntry = {
   id: string;
@@ -11,30 +11,38 @@ export type ListItemEntry = {
   icon?: string | null;
 };
 
-export type ListItemProps = { value: ListItemEntry };
+@customElement("clinq-list-item")
+export class ListItem extends LitElement {
+  @property({ attribute: false })
+  public value: ListItemEntry | null = null;
 
-function ListItem({
-  value: { image, name, description, annotation, icon },
-}: ListItemProps) {
-  return html`
-    ${styles}
+  public render() {
+    const { value } = this;
 
-    <div class="container">
-      ${icon
-        ? html` <div class="icon"><img src=${icon} alt="Icon" /></div> `
-        : nothing}
-      <clinq-avatar class="avatar" .url=${image} .alt=${name}></clinq-avatar>
-      <div class="content">
-        ${name ? html` <div class="title">${name}</div> ` : nothing}
-        ${description
-          ? html` <div class="description">${description}</div> `
+    if (!value) {
+      return nothing;
+    }
+
+    const { id, image, name, description, annotation, icon } = value;
+
+    return html`
+      ${styles}
+
+      <div class="container">
+        ${icon
+          ? html` <div class="icon"><img src=${icon} alt="Icon" /></div> `
+          : nothing}
+        <clinq-avatar class="avatar" .url=${image} .alt=${name}></clinq-avatar>
+        <div class="content">
+          ${name ? html` <div class="title">${name}</div> ` : nothing}
+          ${description
+            ? html` <div class="description">${description}</div> `
+            : nothing}
+        </div>
+        ${annotation
+          ? html` <div class="annotation">${annotation}</div> `
           : nothing}
       </div>
-      ${annotation
-        ? html` <div class="annotation">${annotation}</div> `
-        : nothing}
-    </div>
-  `;
+    `;
+  }
 }
-
-customElements.define("clinq-list-item", component<ListItemProps>(ListItem));

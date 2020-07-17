@@ -1,4 +1,4 @@
-import { LitElement, property } from "lit-element";
+import { LitElement, property, customElement } from "lit-element";
 import { html, nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { SpinnerVariant } from "../spinner/spinner";
@@ -13,9 +13,10 @@ export enum ButtonVariant {
   CTA = "CTA",
 }
 
-type ButtonType = "button" | "submit" | "reset" | "menu";
+export type ButtonType = "button" | "submit" | "reset" | "menu";
 
-class Button extends LitElement {
+@customElement("clinq-avatar")
+export class Button extends LitElement {
   static styles = styles;
 
   @property({ attribute: true })
@@ -66,5 +67,3 @@ class Button extends LitElement {
     `;
   }
 }
-
-customElements.define("clinq-button", Button);

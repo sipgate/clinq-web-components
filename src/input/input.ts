@@ -1,76 +1,75 @@
 import { html, nothing } from "lit-html";
 import styles from "./input.styles";
-import { LitElement, property } from "lit-element";
+import { LitElement, property, customElement } from "lit-element";
 
-type InputType =
-	| "hidden"
-	| "text"
-	| "search"
-	| "tel"
-	| "url"
-	| "email"
-	| "password"
-	| "datetime"
-	| "date"
-	| "month"
-	| "week"
-	| "time"
-	| "datetime-local"
-	| "number"
-	| "range"
-	| "color"
-	| "checkbox"
-	| "radio"
-	| "file"
-	| "submit"
-	| "image"
-	| "reset"
-	| "button";
+export type InputType =
+  | "hidden"
+  | "text"
+  | "search"
+  | "tel"
+  | "url"
+  | "email"
+  | "password"
+  | "datetime"
+  | "date"
+  | "month"
+  | "week"
+  | "time"
+  | "datetime-local"
+  | "number"
+  | "range"
+  | "color"
+  | "checkbox"
+  | "radio"
+  | "file"
+  | "submit"
+  | "image"
+  | "reset"
+  | "button";
 
+@customElement("clinq-input")
 class Input extends LitElement {
-	static styles = styles;
+  static styles = styles;
 
-	@property({ attribute: true })
-	private type: InputType = "text";
+  @property({ attribute: true })
+  private type: InputType = "text";
 
-	@property({ attribute: false })
-	private value = "";
+  @property({ attribute: false })
+  private value = "";
 
-	@property({ attribute: true })
-	private placeholder = "";
+  @property({ attribute: true })
+  private placeholder = "";
 
-	@property({ attribute: false })
-	private icon?: string;
+  @property({ attribute: false })
+  private icon?: string;
 
-	@property({ attribute: true })
-	private required = false;
+  @property({ type: Boolean })
+  public required = false;
 
-	private handleInput(event: InputEvent) {
-		if (event.target) {
-			const target = event.target as HTMLInputElement;
-			this.dispatchEvent(
-				new CustomEvent("change", {
-					detail:
-						this.type === "checkbox"
-							? { value: target.checked }
-							: { value: target.value },
-				})
-			);
-		}
-	}
+  private handleInput(event: InputEvent) {
+    if (event.target) {
+      const target = event.target as HTMLInputElement;
+      this.dispatchEvent(
+        new CustomEvent("change", {
+          detail:
+            this.type === "checkbox"
+              ? { value: target.checked }
+              : { value: target.value },
+        })
+      );
+    }
+  }
 
-	render() {
-		return html`
-			<input
-				placeholder=${this.placeholder}
-				.value=${this.value}
-				type=${this.type}
-				@input=${this.handleInput}
-				?required=${this.required}
-			/>
-			${this.icon ? html` <img src=${this.icon} /> ` : nothing}
-		`;
-	}
+  public render() {
+    return html`
+      <input
+        placeholder=${this.placeholder}
+        .value=${this.value}
+        type=${this.type}
+        @input=${this.handleInput}
+        ?required=${this.required}
+      />
+      ${this.icon ? html` <img src=${this.icon} /> ` : nothing}
+    `;
+  }
 }
-
-customElements.define("clinq-input", Input);
