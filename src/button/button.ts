@@ -15,7 +15,7 @@ export enum ButtonVariant {
 
 export type ButtonType = "button" | "submit" | "reset" | "menu";
 
-@customElement("clinq-avatar")
+@customElement("clinq-button")
 export class Button extends LitElement {
   static styles = styles;
 
