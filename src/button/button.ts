@@ -19,20 +19,20 @@ export type ButtonType = "button" | "submit" | "reset" | "menu";
 export class Button extends LitElement {
   static styles = styles;
 
-  @property({ attribute: true })
+  @property()
   private type: ButtonType = "button";
 
-  @property({ type: Boolean, attribute: true })
+  @property()
+  public variant: ButtonVariant = ButtonVariant.DEFAULT;
+
+  @property({ type: Boolean })
   public disabled: boolean = false;
 
   @property({ type: Boolean })
   public round: boolean = false;
 
-  @property({ type: Boolean, attribute: true })
+  @property({ type: Boolean })
   public loading: boolean = false;
-
-  @property({ attribute: false })
-  public variant: ButtonVariant = ButtonVariant.DEFAULT;
 
   private handleClick(event: MouseEvent) {
     event.stopPropagation();
