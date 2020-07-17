@@ -1,5 +1,5 @@
-import { LitElement, property, customElement } from "lit-element";
-import { html, nothing } from "lit-html";
+import { customElement, LitElement, property } from "lit-element";
+import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { SpinnerVariant } from "../spinner/spinner";
 import styles from "./button.styles";
@@ -41,6 +41,7 @@ export class Button extends LitElement {
 
   render() {
     const { disabled, round, variant, loading } = this;
+
     return html`
       <button
         type=${this.type}
