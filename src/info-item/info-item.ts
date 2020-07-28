@@ -9,6 +9,8 @@ export type InfoItemProps = {
 
 @customElement("clinq-info-item")
 export class InfoItem extends LitElement {
+  static styles = styles;
+
   @property()
   public label: string | null = null;
 
@@ -19,8 +21,6 @@ export class InfoItem extends LitElement {
     const { label, value } = this;
 
     return html`
-      ${styles}
-
       <clinq-info-container>
         <div class="content">
           ${label ? html`<div class="label">${label}</div>` : nothing}

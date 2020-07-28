@@ -5,6 +5,8 @@ import styles from "./popover.styles";
 
 @customElement("clinq-popover")
 export class Popover extends LitElement {
+  static styles = styles;
+
   @property({ attribute: true })
   private placement: "bottom-left" | "bottom-right" = "bottom-right";
 
@@ -28,8 +30,6 @@ export class Popover extends LitElement {
 
   public render() {
     return html`
-      ${styles}
-
       <div class="container">
         <slot name="button" @click=${this.handleToggle}></slot>
         ${this.open

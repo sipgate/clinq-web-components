@@ -1,17 +1,15 @@
-import { html } from "lit-html";
+import { css } from "lit-element";
 
-export default html`
-  <style>
-    :host {
-      display: block;
-    }
+export default css`
+  :host {
+    display: block;
+  }
 
-    .container {
-      position: relative;
-    }
+  .container {
+    position: relative;
+  }
 
-    .content {
-      position: absolute;
-    }
-  </style>
+  .content {
+    position: absolute;
+  }
 `;

@@ -13,6 +13,8 @@ export type ListItemEntry = {
 
 @customElement("clinq-list-item")
 export class ListItem extends LitElement {
+  static styles = styles;
+
   @property({ attribute: false })
   public value: ListItemEntry | null = null;
 
@@ -26,8 +28,6 @@ export class ListItem extends LitElement {
     const { id, image, name, description, annotation, icon } = value;
 
     return html`
-      ${styles}
-
       <div class="container">
         ${icon
           ? html` <div class="icon"><img src=${icon} alt="Icon" /></div> `

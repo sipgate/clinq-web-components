@@ -28,7 +28,7 @@ export type InputType =
   | "button";
 
 @customElement("clinq-input")
-class Input extends LitElement {
+export class Input extends LitElement {
   static styles = styles;
 
   @property({ attribute: true })

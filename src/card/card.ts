@@ -4,6 +4,8 @@ import styles from "./card.styles";
 
 @customElement("clinq-card")
 export class Card extends LitElement {
+  static styles = styles;
+
   @property()
   public icon: string | null = null;
 
@@ -11,8 +13,6 @@ export class Card extends LitElement {
     const { icon } = this;
 
     return html`
-      ${styles}
-
       <div class="card">
         <slot name="header"></slot>
         <div class="content">

@@ -1,7 +1,7 @@
+import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./message.styles";
-import { LitElement, customElement, property } from "lit-element";
 
 export enum MessageType {
   USER,
@@ -16,6 +16,8 @@ export interface Message {
 
 @customElement("clinq-message")
 export class Message extends LitElement {
+  static styles = styles;
+
   @property({ attribute: false })
   public value: Message | null = null;
 

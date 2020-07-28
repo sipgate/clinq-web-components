@@ -4,11 +4,13 @@ import { nothing } from "lit-html";
 
 @customElement("clinq-avatar")
 export class Avatar extends LitElement {
-  @property()
-  public url: string | null = null;
+  static styles = styles;
 
   @property()
-  public alt: string | null = null;
+  public url?: string | null = "";
+
+  @property()
+  public alt?: string | null = "";
 
   public render() {
     const { url, alt } = this;
@@ -17,9 +19,6 @@ export class Avatar extends LitElement {
       return nothing;
     }
 
-    return html`
-      ${styles}
-      <img src=${url} alt=${alt || "Avatar"} />
-    `;
+    return html` <img src=${url} alt=${alt || "Avatar"} /> `;
   }
 }
