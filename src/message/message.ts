@@ -36,8 +36,6 @@ export class Message extends LitElement {
     });
 
     return html`
-      ${styles}
-
       <div class="container ${containerStyles}">
         <div class="text">${text}</div>
         <div class="time">${time}</div>
