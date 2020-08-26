@@ -2,7 +2,7 @@ import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import styles from "./list-item.styles";
 
-export type ListItemEntry = {
+type ListItemEntry = {
   id: string;
   image?: string | null;
   name?: string | null;
@@ -25,7 +25,7 @@ export class ListItem extends LitElement {
       return nothing;
     }
 
-    const { id, image, name, description, annotation, icon } = value;
+    const { image, name, description, annotation, icon } = value;
 
     return html`
       <div class="container">

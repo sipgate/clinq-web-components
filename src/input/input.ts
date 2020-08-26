@@ -1,8 +1,8 @@
+import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import styles from "./input.styles";
-import { LitElement, property, customElement } from "lit-element";
 
-export type InputType =
+type InputType =
   | "hidden"
   | "text"
   | "search"

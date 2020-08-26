@@ -3,24 +3,21 @@ import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./spinner.styles";
 
-export enum SpinnerVariant {
-  DARK = "DARK",
-  BRIGHT = "BRIGHT",
-}
+type SpinnerVariant = "dark" | "bright";
 
 @customElement("clinq-spinner")
 export class Spinner extends LitElement {
   static styles = styles;
 
   @property({ attribute: false })
-  public variant: SpinnerVariant = SpinnerVariant.BRIGHT;
+  public variant: SpinnerVariant = "bright";
 
   render() {
     return html` <svg class="spinner" viewBox="0 0 50 50">
       <circle
         class="path ${classMap({
-          bright: this.variant === SpinnerVariant.BRIGHT,
-          dark: this.variant === SpinnerVariant.DARK,
+          bright: this.variant === "bright",
+          dark: this.variant === "dark",
         })}"
         cx="25"
         cy="25"

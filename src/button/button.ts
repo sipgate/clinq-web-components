@@ -1,19 +1,17 @@
 import { customElement, LitElement, property } from "lit-element";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import { SpinnerVariant } from "../spinner/spinner";
 import styles from "./button.styles";
 
-export enum ButtonVariant {
-  DEFAULT = "DEFAULT",
-  BRIGHT = "BRIGHT",
-  PRODUCT = "PRODUCT",
-  DANGER = "DANGER",
-  LINK = "LINK",
-  CTA = "CTA",
-}
+type ButtonVariant =
+  | "default"
+  | "bright"
+  | "product"
+  | "danger"
+  | "link"
+  | "cta";
 
-export type ButtonType = "button" | "submit" | "reset" | "menu";
+type ButtonType = "button" | "submit" | "reset" | "menu";
 
 @customElement("clinq-button")
 export class Button extends LitElement {
@@ -23,7 +21,7 @@ export class Button extends LitElement {
   private type: ButtonType = "button";
 
   @property()
-  public variant: ButtonVariant = ButtonVariant.DEFAULT;
+  public variant: ButtonVariant = "default";
 
   @property({ type: Boolean })
   public disabled: boolean = false;
@@ -49,19 +47,17 @@ export class Button extends LitElement {
         @click=${this.handleClick}
         class=${classMap({
           round,
-          default: variant === ButtonVariant.DEFAULT,
-          product: variant === ButtonVariant.PRODUCT,
-          bright: variant === ButtonVariant.BRIGHT,
-          danger: variant === ButtonVariant.DANGER,
-          link: variant === ButtonVariant.LINK,
-          cta: variant === ButtonVariant.CTA,
+          default: variant === "default",
+          product: variant === "product",
+          bright: variant === "bright",
+          danger: variant === "danger",
+          link: variant === "link",
+          cta: variant === "cta",
         })}
       >
         ${loading
           ? html`<clinq-spinner
-              .variant=${variant === ButtonVariant.BRIGHT
-                ? SpinnerVariant.DARK
-                : SpinnerVariant.BRIGHT}
+              .variant=${variant === "bright" ? "dark" : "bright"}
             ></clinq-spinner>`
           : html`<slot></slot>`}
       </button>

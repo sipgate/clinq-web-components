@@ -3,19 +3,16 @@ import { html, nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./message.styles";
 
-export enum MessageType {
-  USER,
-  OTHER,
-}
+type MessageType = "user" | "other";
 
-export interface Message {
+type Message = {
   type: MessageType;
   text: string;
   time: string;
-}
+};
 
 @customElement("clinq-message")
-export class Message extends LitElement {
+export class MessageElement extends LitElement {
   static styles = styles;
 
   @property({ attribute: false })
@@ -31,8 +28,8 @@ export class Message extends LitElement {
     const { type, text, time } = value;
 
     const containerStyles = classMap({
-      user: type === MessageType.USER,
-      other: type === MessageType.OTHER,
+      user: type === "user",
+      other: type === "other",
     });
 
     return html`

@@ -13,16 +13,13 @@ npm i @clinq/web-components
 ## Example
 
 ```ts
-import { ButtonVariant } from "@clinq/web-components";
+// Import this package once in an early entry point in your project
+import "@clinq/web-components";
+
 import { html, render } from "lit-html";
 
 const example = ({ disabled, onClick }) => html`
-  <clinq-button
-    round
-    .variant=${ButtonVariant.BRIGHT}
-    ?disabled=${disabled}
-    @click=${onClick}
-  >
+  <clinq-button round variant="bright" ?disabled=${disabled} @click=${onClick}>
     <img src="./images/image.svg" />
   </clinq-button>
 `;
@@ -32,3 +29,11 @@ render(
   document.body
 );
 ```
+
+## Development
+
+**Do not export anything!** Otherwise `npm link` of other packages using this package will result in multiple registration of components. This is a pure component library.
+
+## License
+
+[MIT](LICENSE)

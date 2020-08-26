@@ -1,11 +1,6 @@
-import { LitElement, property, customElement } from "lit-element";
+import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import styles from "./info-item.styles";
-
-export type InfoItemProps = {
-  label: string;
-  value: string;
-};
 
 @customElement("clinq-info-item")
 export class InfoItem extends LitElement {

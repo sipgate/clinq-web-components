@@ -1,7 +1,15 @@
 import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
-import { ListItemEntry } from "../list-item/list-item";
 import styles from "./list.styles";
+
+type ListItemEntry = {
+  id: string;
+  image?: string | null;
+  name?: string | null;
+  description?: string | null;
+  annotation?: string | null;
+  icon?: string | null;
+};
 
 @customElement("clinq-list")
 export class List extends LitElement {
