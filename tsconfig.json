@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
     "module": "ESNext",
+    "target": "ES2015",
+    "moduleResolution": "node",
     "strict": true,
     "outDir": "lib",
-    "moduleResolution": "Node",
     "experimentalDecorators": true
   }
 }
