@@ -22,3 +22,5 @@ import "./avatar/avatar";
 export * from "./avatar/avatar";
 import "./video/video";
 export * from "./video/video";
+import "./badge/badge";
+export * from "./badge/badge";
