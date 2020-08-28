@@ -1,6 +1,7 @@
 .vscode/
 node_modules/
 src/
+build/
 .gitignore
 package-lock.json
 tsconfig.json

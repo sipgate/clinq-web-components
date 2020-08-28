@@ -1,5 +1,6 @@
 .idea/
 .vscode/
 lib/
+build/
 node_modules/
 /web-components.js

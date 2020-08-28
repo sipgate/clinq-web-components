@@ -5,9 +5,12 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "tsc --watch",
-    "prepublishOnly": "npm run build:esm",
-    "build": "rimraf lib && tsc",
-    "build:esm": "npm run build && rollup -c"
+    "prepublishOnly": "npm run build",
+    "build": "npm run build:esm && npm run build:cjs",
+    "compile:esm": "tsc --project tsconfig.json",
+    "compile:cjs": "tsc --project tsconfig.cjs.json",
+    "build:cjs": "rimraf lib && npm run compile:cjs",
+    "build:esm": "rimraf build && npm run compile:esm && rollup -c"
   },
   "repository": {
     "type": "git",

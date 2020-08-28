@@ -15,9 +15,13 @@ npm i @clinq/web-components
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <script
+    type="module"
+    src="https://unpkg.com/@clinq/web-components/web-components.js"
+  ></script>
+
   <style>
     body {
-      margin: 0;
       background-color: black;
       --theme-text-dark: rgba(0, 0, 0, 1);
       --theme-input: rgba(255, 255, 255, 1);
@@ -25,14 +29,21 @@ npm i @clinq/web-components
     }
   </style>
 
-  <clinq-button variant="bright">
-    Click me!
-  </clinq-button>
+  <script type="module">
+    import { html, render } from "https://unpkg.com/lit-html/lit-html.js";
 
-  <script
-    type="module"
-    src="https://unpkg.com/@clinq/web-components/web-components.js"
-  ></script>
+    const renderButton = ({ onClick, title }) =>
+      html`
+        <clinq-button @click=${onClick} variant="bright">
+          ${title}
+        </clinq-button>
+      `;
+
+    render(
+      renderButton({ title: "Click me!", onClick: () => alert("hello world") }),
+      document.body
+    );
+  </script>
 </html>
 ```
 
