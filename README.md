@@ -20,11 +20,8 @@ npm i @clinq/web-components
 
   <!-- "my-element" component implementation -->
   <script type="module">
-    import "https://unpkg.com/@clinq/web-components@0.15.2?module";
-    import {
-      LitElement,
-      html,
-    } from "https://unpkg.com/lit-element@2.4.0?module";
+    import "https://unpkg.com/@clinq/web-components?module";
+    import { LitElement, html } from "https://unpkg.com/lit-element?module";
 
     class MyElement extends LitElement {
       handleClick() {
