@@ -25,38 +25,14 @@ npm i @clinq/web-components
     }
   </style>
 
-  <my-element></my-element>
+  <clinq-button variant="bright">
+    Click me!
+  </clinq-button>
 
   <script
     type="module"
     src="https://unpkg.com/@clinq/web-components/web-components.js"
   ></script>
-
-  <script type="module">
-    import { LitElement } from "https://unpkg.com/lit-element/lit-element.js";
-
-    class MyElement extends LitElement {
-      disabled = false;
-
-      handleClick() {
-        alert("Hello, World!");
-      }
-
-      render() {
-        return html`
-          <clinq-button
-            variant="bright"
-            ?disabled=${this.disabled}
-            @click=${this.handleClick}
-          >
-            Click me!
-          </clinq-button>
-        `;
-      }
-    }
-
-    customElements.define("my-element", MyElement);
-  </script>
 </html>
 ```
 
