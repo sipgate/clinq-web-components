@@ -12,22 +12,52 @@ npm i @clinq/web-components
 
 ## Example
 
-```ts
-// Import this package once in an early entry point in your project
-import "@clinq/web-components";
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      --theme-text-dark: rgba(0, 0, 0, 1);
+      --theme-input: rgba(255, 255, 255, 1);
+      --theme-input-alpha: rgba(255, 255, 255, 0.8);
+    }
+  </style>
 
-import { html, render } from "lit-html";
+  <my-element></my-element>
 
-const example = ({ disabled, onClick }) => html`
-  <clinq-button round variant="bright" ?disabled=${disabled} @click=${onClick}>
-    <img src="./images/image.svg" />
-  </clinq-button>
-`;
+  <script
+    type="module"
+    src="https://unpkg.com/@clinq/web-components/web-components.js"
+  ></script>
 
-render(
-  example({ disabled: true, onClick: () => alert("Hello World") }),
-  document.body
-);
+  <script type="module">
+    import { LitElement } from "https://unpkg.com/lit-element/lit-element.js";
+
+    class MyElement extends LitElement {
+      disabled = false;
+
+      handleClick() {
+        alert("Hello, World!");
+      }
+
+      render() {
+        return html`
+          <clinq-button
+            variant="bright"
+            ?disabled=${this.disabled}
+            @click=${this.handleClick}
+          >
+            Click me!
+          </clinq-button>
+        `;
+      }
+    }
+
+    customElements.define("my-element", MyElement);
+  </script>
+</html>
 ```
 
 ## Development
