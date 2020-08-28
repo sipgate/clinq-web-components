@@ -24,7 +24,7 @@ npm i @clinq/web-components
   <!-- Your custom element -->
   <my-element></my-element>
 
-  <!-- CSS Variables for clinq-button -->
+  <!-- CSS variables for clinq-button -->
   <style>
     body {
       background-color: black;
@@ -34,7 +34,7 @@ npm i @clinq/web-components
     }
   </style>
 
-  <!-- my-element component implementation -->
+  <!-- "my-element" component implementation -->
   <script type="module">
     import {
       LitElement,
@@ -54,6 +54,7 @@ npm i @clinq/web-components
         `;
       }
     }
+
     customElements.define("my-element", MyElement);
   </script>
 </html>
