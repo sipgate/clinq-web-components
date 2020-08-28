@@ -15,11 +15,16 @@ npm i @clinq/web-components
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <!-- Import clinq web components as JS module -->
   <script
     type="module"
     src="https://unpkg.com/@clinq/web-components/web-components.js"
   ></script>
 
+  <!-- Your custom element -->
+  <my-element></my-element>
+
+  <!-- CSS Variables for clinq-button -->
   <style>
     body {
       background-color: black;
@@ -29,20 +34,24 @@ npm i @clinq/web-components
     }
   </style>
 
+  <!-- my-element component implementation -->
   <script type="module">
-    import { html, render } from "https://unpkg.com/lit-html/lit-html.js";
+    import { LitElement, html } from "https://unpkg.com/lit-element?module";
 
-    const renderButton = ({ onClick, title }) =>
-      html`
-        <clinq-button @click=${onClick} variant="bright">
-          ${title}
-        </clinq-button>
-      `;
+    class MyElement extends LitElement {
+      handleClick() {
+        alert("Hello, World!");
+      }
 
-    render(
-      renderButton({ title: "Click me!", onClick: () => alert("hello world") }),
-      document.body
-    );
+      render() {
+        return html`
+          <clinq-button @click=${this.handleClick} variant="bright">
+            Click me!
+          </clinq-button>
+        `;
+      }
+    }
+    customElements.define("my-element", MyElement);
   </script>
 </html>
 ```
