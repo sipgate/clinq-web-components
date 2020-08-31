@@ -33,5 +33,6 @@ export default css`
 
   .text {
     padding: 10px;
+    flex-grow: 1;
   }
 `;
