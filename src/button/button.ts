@@ -40,12 +40,10 @@ export class Button extends LitElement {
   }
 
   render() {
-    const { disabled, round, variant, loading } = this;
-
+    const { round, variant, loading } = this;
     return html`
       <button
         type=${this.type}
-        ?disabled=${disabled}
         @click=${this.handleClick}
         class=${classMap({
           round,
