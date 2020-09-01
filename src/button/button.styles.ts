@@ -36,7 +36,7 @@ export default css`
     border-radius: 50%;
   }
 
-  button:disabled {
+  button.disabled {
     cursor: default;
     opacity: 0.5;
   }
@@ -45,7 +45,7 @@ export default css`
     background: var(--theme-highlight-alt);
   }
 
-  button.default:not(:disabled):hover {
+  button.default:not(.disabled):hover {
     opacity: 0.5;
     background: var(--theme-highlight);
   }
@@ -56,7 +56,7 @@ export default css`
     text-shadow: 0 0.5px 1px #057c76;
   }
 
-  button:not(:disabled).product:hover {
+  button:not(.disabled).product:hover {
     background: var(--theme-product-alt);
   }
 
@@ -65,7 +65,7 @@ export default css`
     background: var(--theme-danger);
   }
 
-  button:not(:disabled).danger:hover {
+  button:not(.disabled).danger:hover {
     background: var(--theme-danger-alt);
   }
 
@@ -74,7 +74,7 @@ export default css`
     background: var(--theme-input);
   }
 
-  button.bright:not(:disabled):hover {
+  button.bright:not(.disabled):hover {
     background: var(--theme-input-alpha);
   }
 
@@ -90,7 +90,7 @@ export default css`
     text-shadow: 0 0.5px 1px var(--theme-cta-alt);
   }
 
-  button:not(:disabled).link:hover {
+  button:not(.disabled).link:hover {
     background: transparent;
     color: var(--theme-product-alt);
   }
