@@ -24,6 +24,7 @@ export default css`
     width: 100%;
     height: 100%;
     border-radius: 20px;
+    outline: none;
     cursor: pointer;
   }
 
