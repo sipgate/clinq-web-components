@@ -18,12 +18,12 @@ export default css`
   .content {
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding: 20px;
     align-items: center;
   }
 
   .icon {
-    margin: 10px 0px;
+    margin-right: 10px;
     padding: 10px;
     border-right: 1px solid var(--theme-border-light);
     display: flex;
@@ -31,8 +31,8 @@ export default css`
     justify-content: center;
   }
 
-  .text {
-    padding: 10px;
+  .content-container {
     flex-grow: 1;
+    width: 0;
   }
 `;

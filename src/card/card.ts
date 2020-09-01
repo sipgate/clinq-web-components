@@ -17,7 +17,9 @@ export class Card extends LitElement {
         <slot name="header"></slot>
         <div class="content">
           ${icon ? html`<div class="icon"><img src=${icon} /></div>` : nothing}
-          <div class="text"><slot name="content"></slot></div>
+          <div class="content-container">
+            <slot name="content"></slot>
+          </div>
         </div>
         <slot name="footer"></slot>
       </div>
