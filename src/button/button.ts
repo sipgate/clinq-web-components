@@ -34,7 +34,9 @@ export class Button extends LitElement {
 
   private handleClick(event: MouseEvent) {
     event.stopPropagation();
-    this.click();
+    if (!this.disabled) {
+      this.click();
+    }
   }
 
   render() {
