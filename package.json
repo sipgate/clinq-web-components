@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "module": "web-components.js",
   "scripts": {
-    "start": "tsc --watch",
+    "start": "tsc --project tsconfig.cjs.json --watch",
     "prepublishOnly": "npm run build",
     "build": "npm run build:esm && npm run build:cjs",
     "compile:esm": "tsc --project tsconfig.json",
