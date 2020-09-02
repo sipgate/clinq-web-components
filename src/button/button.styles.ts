@@ -5,6 +5,7 @@ export default css`
     display: inline-block;
     overflow: hidden;
     height: 35px;
+    font-size: 14px;
     flex-shrink: 0;
   }
 
@@ -17,7 +18,6 @@ export default css`
     font-size: inherit;
     color: inherit;
     border: none;
-    font-size: 14px;
     font-weight: 600;
     box-sizing: border-box;
     padding: 0 15px;
@@ -26,10 +26,6 @@ export default css`
     border-radius: 20px;
     outline: none;
     cursor: pointer;
-  }
-
-  button:not(.round) {
-    min-width: 100px;
   }
 
   .round {
