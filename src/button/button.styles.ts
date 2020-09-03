@@ -91,8 +91,4 @@ export default css`
     background: transparent;
     color: var(--theme-product-alt);
   }
-
-  clinq-spinner {
-    margin-right: 5px;
-  }
 `;
