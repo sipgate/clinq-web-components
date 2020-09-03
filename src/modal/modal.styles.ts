@@ -1,29 +1,28 @@
 import { css } from "lit-element";
 
 export default css`
-  /* :host {
-  } */
 
   .modal {
     position: fixed;
     z-index: 1;
-    left: 0;
-    top: 0;
+    left: 0px;
+    right: 0px;
+    top: 0px;
     width: 100%;
     height: 100%;
+    padding: 0px 20px;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
   }
 
-  .modal-content {
+  .content {
     font-weight: 700;
     background: #323239;
-    margin: 15% auto;
+    margin: 50px auto;
     padding: 40px 20px;
     border-radius: 8px;
     max-width: 800px;
-    /* width: 100%; */
     position: relative;
   }
 

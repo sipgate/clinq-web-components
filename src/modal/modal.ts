@@ -19,7 +19,7 @@ export class Input extends LitElement {
   public render() {
     return html`
       <div class="modal" @click=${this.handleOutsideClick}>
-        <div class="modal-content">
+        <div class="content">
           <button class="close-icon" @click=${this.handleClose}></button>
           <slot name="content"> </slot>
         </div>
