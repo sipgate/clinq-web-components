@@ -15,10 +15,11 @@ export default css`
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    font-family: inherit;
     font-size: inherit;
+    font-weight: 600;
     color: inherit;
     border: none;
-    font-weight: 600;
     box-sizing: border-box;
     padding: 0 15px;
     width: 100%;
