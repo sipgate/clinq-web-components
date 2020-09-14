@@ -11,8 +11,10 @@ type Message = {
   time: string;
 };
 
-@customElement("clinq-message")
-export class MessageElement extends LitElement {
+const HTML_TAG = "clinq-message";
+
+@customElement(HTML_TAG)
+class MessageElement extends LitElement {
   static styles = styles;
 
   @property({ attribute: false })
@@ -38,5 +40,11 @@ export class MessageElement extends LitElement {
         <div class="time">${time}</div>
       </div>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: MessageElement;
   }
 }

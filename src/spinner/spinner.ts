@@ -5,8 +5,10 @@ import styles from "./spinner.styles";
 
 type SpinnerVariant = "dark" | "bright";
 
-@customElement("clinq-spinner")
-export class Spinner extends LitElement {
+const HTML_TAG = "clinq-spinner";
+
+@customElement(HTML_TAG)
+class SpinnerElement extends LitElement {
   static styles = styles;
 
   @property({ attribute: false })
@@ -26,5 +28,11 @@ export class Spinner extends LitElement {
         stroke-width="5"
       ></circle>
     </svg>`;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: SpinnerElement;
   }
 }

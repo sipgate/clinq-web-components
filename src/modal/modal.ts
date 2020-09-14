@@ -2,8 +2,10 @@ import { customElement, LitElement } from "lit-element";
 import { html } from "lit-html";
 import styles from "./modal.styles";
 
-@customElement("clinq-modal")
-export class Input extends LitElement {
+const HTML_TAG = "clinq-modal";
+
+@customElement(HTML_TAG)
+class InputElement extends LitElement {
   static styles = styles;
 
   private handleClose() {
@@ -11,8 +13,8 @@ export class Input extends LitElement {
   }
 
   public handleOutsideClick(e: any) {
-    if(e.target.classList && e.target.classList.contains("modal")) {
-        this.handleClose();
+    if (e.target.classList && e.target.classList.contains("modal")) {
+      this.handleClose();
     }
   }
 
@@ -25,5 +27,11 @@ export class Input extends LitElement {
         </div>
       </div>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: InputElement;
   }
 }

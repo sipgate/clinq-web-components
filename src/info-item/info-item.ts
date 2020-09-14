@@ -2,8 +2,10 @@ import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import styles from "./info-item.styles";
 
-@customElement("clinq-info-item")
-export class InfoItem extends LitElement {
+const HTML_TAG = "clinq-info-item";
+
+@customElement(HTML_TAG)
+class InfoItemElement extends LitElement {
   static styles = styles;
 
   @property()
@@ -24,5 +26,11 @@ export class InfoItem extends LitElement {
         <slot></slot>
       </clinq-info-container>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: InfoItemElement;
   }
 }

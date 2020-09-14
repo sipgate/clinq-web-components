@@ -11,8 +11,10 @@ type ListItemEntry = {
   icon?: string | null;
 };
 
-@customElement("clinq-list")
-export class List extends LitElement {
+const HTML_TAG = "clinq-list";
+
+@customElement(HTML_TAG)
+class ListElement extends LitElement {
   static styles = styles;
 
   @property({ attribute: false })
@@ -78,5 +80,11 @@ export class List extends LitElement {
         })}
       </div>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: ListElement;
   }
 }

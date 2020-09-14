@@ -2,8 +2,10 @@ import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
 import styles from "./card.styles";
 
-@customElement("clinq-card")
-export class Card extends LitElement {
+const HTML_TAG = "clinq-card";
+
+@customElement(HTML_TAG)
+class CardElement extends LitElement {
   static styles = styles;
 
   @property()
@@ -24,5 +26,11 @@ export class Card extends LitElement {
         <slot name="footer"></slot>
       </div>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: CardElement;
   }
 }

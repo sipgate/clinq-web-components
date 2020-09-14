@@ -1,9 +1,11 @@
-import styles from "./avatar.styles";
-import { LitElement, html, property, customElement } from "lit-element";
+import { customElement, html, LitElement, property } from "lit-element";
 import { nothing } from "lit-html";
+import styles from "./avatar.styles";
 
-@customElement("clinq-avatar")
-export class Avatar extends LitElement {
+const HTML_TAG = "clinq-avatar";
+
+@customElement(HTML_TAG)
+class AvatarElement extends LitElement {
   static styles = styles;
 
   @property()
@@ -20,5 +22,11 @@ export class Avatar extends LitElement {
     }
 
     return html` <img src=${url} alt=${alt || "Avatar"} /> `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: AvatarElement;
   }
 }

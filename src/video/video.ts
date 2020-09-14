@@ -1,14 +1,16 @@
 import {
+  customElement,
   html,
   LitElement,
   property,
   PropertyValues,
-  customElement,
 } from "lit-element";
 import styles from "./video.styles";
 
-@customElement("clinq-video")
-export class Video extends LitElement {
+const HTML_TAG = "clinq-video";
+
+@customElement(HTML_TAG)
+class VideoElement extends LitElement {
   static styles = styles;
 
   @property({ attribute: false })
@@ -34,5 +36,11 @@ export class Video extends LitElement {
 
   public render() {
     return html` <video autoplay></video>`;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: VideoElement;
   }
 }

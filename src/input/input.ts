@@ -27,8 +27,10 @@ type InputType =
   | "reset"
   | "button";
 
-@customElement("clinq-input")
-export class Input extends LitElement {
+const HTML_TAG = "clinq-input";
+
+@customElement(HTML_TAG)
+class InputElement extends LitElement {
   static styles = styles;
 
   @property({ attribute: true })
@@ -71,5 +73,11 @@ export class Input extends LitElement {
       />
       ${this.icon ? html` <img src=${this.icon} /> ` : nothing}
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: InputElement;
   }
 }

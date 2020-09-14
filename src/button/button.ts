@@ -13,8 +13,10 @@ type ButtonVariant =
 
 type ButtonType = "button" | "submit" | "reset" | "menu";
 
-@customElement("clinq-button")
-export class Button extends LitElement {
+const HTML_TAG = "clinq-button";
+
+@customElement(HTML_TAG)
+class ButtonElement extends LitElement {
   static styles = styles;
 
   @property()
@@ -63,5 +65,11 @@ export class Button extends LitElement {
           : html`<slot></slot>`}
       </button>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: ButtonElement;
   }
 }

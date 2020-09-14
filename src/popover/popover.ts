@@ -3,8 +3,10 @@ import { html, nothing } from "lit-html";
 import { StyleInfo, styleMap } from "lit-html/directives/style-map";
 import styles from "./popover.styles";
 
-@customElement("clinq-popover")
-export class Popover extends LitElement {
+const HTML_TAG = "clinq-popover";
+
+@customElement(HTML_TAG)
+class PopoverElement extends LitElement {
   static styles = styles;
 
   @property({ attribute: true })
@@ -41,5 +43,11 @@ export class Popover extends LitElement {
           : nothing}
       </div>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    [HTML_TAG]: PopoverElement;
   }
 }
