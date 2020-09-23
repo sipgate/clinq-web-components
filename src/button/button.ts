@@ -40,7 +40,7 @@ class ButtonElement extends LitElement {
   @property({ type: Boolean })
   public loading: boolean = false;
 
-  @internalProperty()
+  @property({ attribute: false })
   public styleOverrides: CSSResult = css``;
 
   private handleClick(event: MouseEvent) {
