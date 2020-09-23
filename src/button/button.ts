@@ -1,4 +1,11 @@
-import { customElement, LitElement, property } from "lit-element";
+import {
+  css,
+  CSSResult,
+  customElement,
+  internalProperty,
+  LitElement,
+  property
+} from "lit-element";
 import { html } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import styles from "./button.styles";
@@ -17,7 +24,6 @@ const HTML_TAG = "clinq-button";
 
 @customElement(HTML_TAG)
 class ButtonElement extends LitElement {
-  static styles = styles;
 
   @property()
   private type: ButtonType = "button";
@@ -34,6 +40,9 @@ class ButtonElement extends LitElement {
   @property({ type: Boolean })
   public loading: boolean = false;
 
+  @internalProperty()
+  public styleOverrides: CSSResult = css``;
+
   private handleClick(event: MouseEvent) {
     event.stopPropagation();
     if (!this.disabled) {
@@ -44,6 +53,10 @@ class ButtonElement extends LitElement {
   render() {
     const { disabled, round, variant, loading } = this;
     return html`
+      <style>
+        ${styles}
+        ${this.styleOverrides}
+      </style>
       <button
         type=${this.type}
         @click=${this.handleClick}

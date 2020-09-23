@@ -11,3 +11,4 @@ import "./message/message";
 import "./popover/popover";
 import "./spinner/spinner";
 import "./video/video";
+import "./modal/modal";
