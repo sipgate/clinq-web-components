@@ -13,6 +13,10 @@ type Message = {
 
 const HTML_TAG = "clinq-message";
 
+function onlyUnique(value: string, index: number, self: string[]) {
+  return self.indexOf(value) === index;
+}
+
 @customElement(HTML_TAG)
 class MessageElement extends LitElement {
   static styles = styles;
@@ -24,13 +28,7 @@ class MessageElement extends LitElement {
   public highlights: string[] = [];
 
   private getHighlightedText(text: string, highlight: string) {
-    const [before, after] = text.split(highlight);
-
-    if (after) {
-      return `${before}<b>${highlight}</b>${after}`;
-    }
-
-    return before;
+    return text.replace(new RegExp(highlight, "g"), `<b>${highlight}</b>`);
   }
 
   public render() {
@@ -49,7 +47,7 @@ class MessageElement extends LitElement {
 
     let highlightedText = text;
 
-    for (const highlight of this.highlights) {
+    for (const highlight of this.highlights.filter(onlyUnique)) {
       highlightedText = this.getHighlightedText(highlightedText, highlight);
     }
 
