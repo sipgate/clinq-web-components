@@ -27,6 +27,10 @@ export default css`
     background: var(--theme-highlight);
   }
 
+  .container.active .title {
+    color: var(--theme-product);
+  }
+
   .icon {
     display: flex;
     align-items: flex-end;

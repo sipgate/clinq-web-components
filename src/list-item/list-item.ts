@@ -1,11 +1,12 @@
 import { customElement, LitElement, property } from "lit-element";
 import { html, nothing } from "lit-html";
+import { classMap } from "lit-html/directives/class-map";
 import styles from "./list-item.styles";
 
 type ListItemEntry = {
   id: string;
   image?: string | null;
-  name?: string | null;
+  title?: string | null;
   description?: string | null;
   annotation?: string | null;
   icon?: string | null;
@@ -20,6 +21,9 @@ class ListItemElement extends LitElement {
   @property({ attribute: false })
   public value: ListItemEntry | null = null;
 
+  @property({ type: Boolean })
+  public active: boolean = false;
+
   public render() {
     const { value } = this;
 
@@ -27,22 +31,22 @@ class ListItemElement extends LitElement {
       return nothing;
     }
 
-    const { image, name, description, annotation, icon } = value;
+    const { image, title, description, annotation, icon } = value;
 
     return html`
-      <div class="container">
+      <div class="container ${classMap({ active: this.active })}">
         ${icon
-          ? html` <div class="icon"><img src=${icon} alt="Icon" /></div> `
+          ? html`<div class="icon"><img src=${icon} alt="Icon" /></div>`
           : nothing}
-        <clinq-avatar class="avatar" .url=${image} .alt=${name}></clinq-avatar>
+        <clinq-avatar class="avatar" .url=${image} .alt=${title}></clinq-avatar>
         <div class="content">
-          ${name ? html` <div class="title">${name}</div> ` : nothing}
+          ${title ? html`<div class="title">${title}</div>` : title}
           ${description
-            ? html` <div class="description">${description}</div> `
+            ? html`<div class="description">${description}</div>`
             : nothing}
         </div>
         ${annotation
-          ? html` <div class="annotation">${annotation}</div> `
+          ? html`<div class="annotation">${annotation}</div>`
           : nothing}
       </div>
     `;

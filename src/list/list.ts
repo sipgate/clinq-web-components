@@ -32,6 +32,9 @@ class ListElement extends LitElement {
   @property({ type: Boolean })
   sort: boolean = false;
 
+  @property({ attribute: false })
+  activeId: string | null = null;
+
   private handleListItemSelect(id: string) {
     return () => {
       this.dispatchEvent(new CustomEvent("change", { detail: { id } }));
@@ -56,6 +59,7 @@ class ListElement extends LitElement {
                     <clinq-list-item
                       @click=${this.handleListItemSelect(item.id)}
                       .value=${item}
+                      ?active=${this.activeId === item.id}
                     ></clinq-list-item>
                   `
                 )}
@@ -68,10 +72,11 @@ class ListElement extends LitElement {
             <div class="headline">${key.toUpperCase()}</div>
             <div>
               ${entries.map(
-                (entry) => html`
+                (item) => html`
                   <clinq-list-item
-                    @click=${this.handleListItemSelect(entry.id)}
-                    .value=${entry}
+                    ?active=${this.activeId === item.id}
+                    @click=${this.handleListItemSelect(item.id)}
+                    .value=${item}
                   ></clinq-list-item>
                 `
               )}
