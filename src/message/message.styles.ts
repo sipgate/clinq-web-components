@@ -26,6 +26,10 @@ export default css`
     font-weight: 700;
   }
 
+  .text b {
+    color: var(--theme-product);
+  }
+
   .time {
     font-size: 12px;
     margin: 5px 0px;

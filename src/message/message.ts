@@ -20,6 +20,19 @@ class MessageElement extends LitElement {
   @property({ attribute: false })
   public value: Message | null = null;
 
+  @property({ attribute: false })
+  public highlights: string[] = [];
+
+  private getHighlightedText(text: string, highlight: string) {
+    const [before, after] = text.split(highlight);
+
+    if (after) {
+      return `${before}<b>${highlight}</b>${after}`;
+    }
+
+    return before;
+  }
+
   public render() {
     const { value } = this;
 
@@ -34,9 +47,15 @@ class MessageElement extends LitElement {
       other: type === "other",
     });
 
+    let highlightedText = text;
+
+    for (const highlight of this.highlights) {
+      highlightedText = this.getHighlightedText(highlightedText, highlight);
+    }
+
     return html`
       <div class="container ${containerStyles}">
-        <div class="text">${text}</div>
+        <div class="text" .innerHTML=${highlightedText}></div>
         <div class="time">${time}</div>
       </div>
     `;
