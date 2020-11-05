@@ -17,6 +17,15 @@ function onlyUnique(value: string, index: number, self: string[]) {
   return self.indexOf(value) === index;
 }
 
+function replaceAt(
+  text: string,
+  index: number,
+  word: string,
+  replacement: string
+) {
+  return text.substr(0, index) + replacement + text.substr(index + word.length);
+}
+
 @customElement(HTML_TAG)
 class MessageElement extends LitElement {
   static styles = styles;
@@ -28,7 +37,13 @@ class MessageElement extends LitElement {
   public highlights: string[] = [];
 
   private getHighlightedText(text: string, highlight: string) {
-    return text.replace(new RegExp(highlight, "g"), `<b>${highlight}</b>`);
+    const regex = new RegExp(`\\b${highlight}\\b`, "g");
+    const match = regex.exec(text);
+    if (match) {
+      const { index } = match;
+      return replaceAt(text, index, highlight, `<b>${highlight}</b>`);
+    }
+    return text;
   }
 
   public render() {
