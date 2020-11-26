@@ -37,11 +37,11 @@ class MessageElement extends LitElement {
   public highlights: string[] = [];
 
   private getHighlightedText(text: string, highlight: string) {
-    const regex = new RegExp(`\\b${highlight}\\b`, "g");
+    const regex = new RegExp(highlight, "gi");
     const match = regex.exec(text);
     if (match) {
       const { index } = match;
-      return replaceAt(text, index, highlight, `<b>${highlight}</b>`);
+      return replaceAt(text, index, highlight, `<b>${match}</b>`);
     }
     return text;
   }
